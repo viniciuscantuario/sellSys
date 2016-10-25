@@ -12,7 +12,7 @@
 <body>
 	<div id="custom-bootstrap-menu" class="navbar navbar-default" role="navigation">
 	    <div class="container-fluid">
-	        <div class="navbar-header"><a class="navbar-brand" href="#">SellSys</a>
+	        <div class="navbar-header"><a class="navbar-brand" href="#">sellSys</a>
 	            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-menubuilder"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
 	            </button>
 	        </div>
@@ -22,9 +22,9 @@
 	                <li class="dropdown">
 			          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cadastros <span class="caret"></span></a>
 			          <ul class="dropdown-menu">
-			            <li><a href="#">Cliente</a></li>
+			            <li><a href="customer.php">Cliente</a></li>
 			            <li><a href="stock.php">Estoque</a></li>
-			            <li><a href="#">Fornecedor</a></li>
+			            <!--li><a href="#">Fornecedor</a></li-->
 			          </ul>	
 			        </li>
 	                <li class="dropdown">

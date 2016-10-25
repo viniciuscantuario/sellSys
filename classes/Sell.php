@@ -11,7 +11,7 @@
 				$code = $_POST['new_product'];
 				$sell_number = $_SESSION['session'];
 
-				$insert_prod = "INSERT INTO `sales`(`sell_number`, `costumer_id`, `stock_id`, `amount`) VALUES ('$sell_number', '1', (SELECT id FROM stock WHERE code = '$code'), '1')";
+				$insert_prod = "INSERT INTO `sales`(`sell_number`, `customer_id`, `stock_id`, `amount`) VALUES ('$sell_number', '1', (SELECT id FROM stock WHERE code = '$code'), '1')";
 				$stmt = DB::prepare($insert_prod);
 				$stmt->execute();
 			}
@@ -24,22 +24,16 @@
 			}
 
 			if (isset($_POST['cancel_sell'])) {
-				echo "<script> 
-						var x = confirm('Deseja cancelar a venda?');
-						if (x == true) { </script>";
-
 				$sell_number = $_SESSION['session'];
 				$cancel_sell = "DELETE FROM sales WHERE sell_number = '$sell_number'";
 				$stmt = DB::prepare($cancel_sell);
 				$stmt->execute();
 				session_destroy();
-
-				echo "<script> } </script>";
 			}
 		}
 
 		public function dashboard() {
-			$sql = "SELECT * FROM costumers WHERE cpf = :client OR name = :client";
+			$sql = "SELECT * FROM customers WHERE cpf = :client OR name = :client";
 			$stmt = DB::prepare($sql);
 			$stmt->bindParam(':client', $_SESSION['client']);
 			$stmt->execute();
@@ -85,7 +79,7 @@
 		}
 
 		public function birthday() {
-			$sql = "SELECT id, name, DATE_FORMAT(birthday,'%d %b') AS birthday FROM costumers WHERE (concat_ws('-',year(now()),month(birthday),day(birthday)) >= NOW() and concat_ws('-',year(now()),month(birthday),day(birthday))<=DATE_ADD(NOW(),INTERVAL 60 DAY)) or (DAY(birthday) = DAY(CURDATE()) AND MONTH(birthday) = MONTH(CURDATE())) ORDER BY birthday LIMIT 3";
+			$sql = "SELECT id, name, DATE_FORMAT(birthday,'%d %b') AS birthday FROM customers WHERE (concat_ws('-',year(now()),month(birthday),day(birthday)) >= NOW() and concat_ws('-',year(now()),month(birthday),day(birthday))<=DATE_ADD(NOW(),INTERVAL 60 DAY)) or (DAY(birthday) = DAY(CURDATE()) AND MONTH(birthday) = MONTH(CURDATE())) ORDER BY birthday LIMIT 3";
 			$stmt = DB::prepare($sql);
 			$stmt->execute();
 			$stmt = $stmt->fetchAll();

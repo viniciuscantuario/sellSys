@@ -1,4 +1,4 @@
-<?php require_once "classes/Register.php"; $stock = new Register(); ?>
+<?php require_once "classes/Register.php"; $customer = new Register(); ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -22,8 +22,8 @@
                 <li class="dropdown active">
 		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cadastros <span class="caret"></span></a>
 		          <ul class="dropdown-menu">
-		            <li><a href="customer.php">Cliente</a></li>
-		            <li class="active"><a href="stock.php">Estoque</a></li>
+		            <li class="active"><a href="customer.php">Cliente</a></li>
+		            <li><a href="stock.php">Estoque</a></li>
 		            <!--li><a href="#">Fornecedor</a></li-->
 		          </ul>	
 		        </li>
@@ -45,69 +45,57 @@
 			<h2 class="text-center">Cadastro de Estoque</h2>
 			<form method="post" action=""> 
 			    <div class="input-group input-group-lg">
-					<span class="input-group-addon" >Codigo do produto</span>
-					<input type="text" name="code" class="form-control" style="width:100%;" onkeyup="maskIt(this,event,'##########')" autofocus required >
+					<span class="input-group-addon" >Nome</span>
+					<input type="text" name="name" class="form-control" style="width:100%;" autofocus required >
 				</div> <br>
 
 				<div class="input-group input-group-lg">
-					<span class="input-group-addon" >Quantidade</span>
-					<input type="text" name="amount" class="form-control" style="width:100%;" onkeyup="maskIt(this,event,'####')" required>
+					<span class="input-group-addon" >CPF</span>
+					<input type="text" name="cpf" class="form-control" style="width:100%;" onkeyup="maskIt(this,event,'###.###.###-##')" required>
 				</div> <br>
 
 				<div class="input-group input-group-lg">
-					<span class="input-group-addon" >Marca</span>
-					<input type="text" name="brand" class="form-control" style="width:100%;" required>
+					<span class="input-group-addon" >Telefone</span>
+					<input type="text" name="phone" class="form-control" style="width:100%;" onkeyup="maskIt(this,event,'(##)#####-####')" required>
 				</div> <br>
 
 				<div class="input-group input-group-lg">
-					<span class="input-group-addon">Tipo</span>
-					<input type="text" name="type" class="form-control"  style="width:100%;" required>
+					<span class="input-group-addon">Aniversario</span>
+					<input type="date" name="birthday" class="form-control"  style="width:100%;" required>
 				</div><br>
 					
 				<div class="input-group input-group-lg">
-					<span class="input-group-addon">Modelo</span>
-					<input type="text" name="model" class="form-control" style="width:100%;" required>
+					<span class="input-group-addon">Endereço</span>
+					<input type="text" name="address" class="form-control" style="width:100%;" required>
 				</div> <br>
 
 				<div class="input-group input-group-lg">
-					<span class="input-group-addon">Valor da Entrada</span>
-					<input type="text" name="price_in" class="form-control" style="width:100%;" onkeyup="maskIt(this,event,'###.###.###,##',true)" required>
+					<span class="input-group-addon">Cidade</span>
+					<input type="text" name="city" class="form-control" style="width:100%;" required>
 				</div> <br>
 
-				<div class="input-group input-group-lg">
-					<span class="input-group-addon">Valor de Venda</span>
-					<input type="text" name="price_out" class="form-control" style="width:100%;" onkeyup="maskIt(this,event,'###.###.###,##',true)" required>
-				</div> <br>
-
-				<div class="input-group input-group-lg">
-					<span class="input-group-addon">Descrição</span>
-					<input type="text" name="description" class="form-control" style="width:100%;" required>
-				</div> <br>
-
-				<button type="submit" class="btn btn-success btn-large pull-right" name="send_stock" value="enviar">Enviar</button>
-				<input type="file" class="btn btn-info btn-large pull-left" name="xml" value="Upload XML">
+				<button type="submit" class="btn btn-success btn-large pull-right" name="send_customer" value="enviar">Enviar</button>
 			</form>
 		</div>
 
 		<div class="col-md-8" style="padding-left:0px; padding-right:15px;">
-			<h3 class="text-center">Estoque<a class="btn btn-large btn-info pull-right" href="">Estoque completo</a></h3>
+			<h3 class="text-center">Estoque<a class="btn btn-large btn-info pull-right" href="">Todos clientes</a></h3>
 			<table class="table table-hover">
 			  <thead>
 			  	<tr>
-			  	 <th>Codigo</th>
-			  	 <th>Qtd</th>
-			  	 <th>Marca</th>
-			  	 <th>Tipo</th>
-			  	 <th>Modelo</th>
-			  	 <th>Valor de Entrada</th>
-			  	 <th>Valor de Saída</th>
-			  	 <th>Descrição</th>
+			  	 <th>Nome</th>
+			  	 <th>CPF</th>
+			  	 <th>Telefone</th>
+			  	 <th>Aniversario</th>
+			  	 <th>Endereço</th>
+			  	 <th>Cidade</th>
+			  	 <th>País</th>
 			  	 <th>Data cadastro</th>
 			  	 <th></th>
 			  	</tr>
 			  </thead>
 			  <tbody>
-			  	<?php $stock->getStockSummary(); ?>
+			  	<?php $customer->getCustomerSummary(); ?>
 			  </tbody>
 			</table>	
 		</div>
