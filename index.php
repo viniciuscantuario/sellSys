@@ -1,7 +1,7 @@
 <?php include 'classes/Sell.php';  $sell = new Sell(); ?>
 <!DOCTYPE html>
 <html lang="pt-br">
-
+<!-- COMENTARY -->
 <head>
 	<title></title>
 	<meta charset="utf-8">
